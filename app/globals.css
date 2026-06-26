@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts are loaded in layout.js — no import needed here */
+
+/* ── Base resets not covered by Tailwind preflight ─────────────── */
+@layer base {
+  html  { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  body  { @apply font-body bg-ivory text-ink antialiased leading-relaxed text-base; }
+  h1,h2,h3,h4 { @apply font-display font-semibold leading-tight text-navy; letter-spacing: 0; }
+  h1 { font-size: clamp(2.4rem, 4.4vw, 4.2rem); }
+  h2 { font-size: clamp(1.9rem, 3vw, 2.75rem); }
+  h3 { font-size: clamp(1.3rem, 1.8vw, 1.6rem); }
+  p  { @apply text-stone mb-4; }
+  a  { @apply text-inherit no-underline; }
+  ::selection { background: rgba(198,161,91,0.28); color: #0E1B2C; }
+  img { @apply max-w-full block; }
+  ul,li { @apply m-0 p-0 list-none; }
+}
+
+/* ── Reveal animation (JS adds .is-visible) ─────────────────────── */
+@layer utilities {
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  .reveal-stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+  .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.15s; }
+  .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.25s; }
+  .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.35s; }
+  .reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; }
+  .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.55s; }
+  .reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 0.65s; }
+  .reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 0.75s; }
+  .reveal-stagger.is-visible > *:nth-child(9) { transition-delay: 0.85s; }
+
+  .btn-primary { @apply inline-flex items-center justify-center gap-2.5 font-semibold text-[0.95rem] px-[30px] py-[15px] rounded-sm bg-gold text-navy border border-transparent transition-all duration-[300ms] hover:bg-gold-light hover:shadow-gold hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold; }
+  .btn-outline { @apply inline-flex items-center justify-center gap-2.5 font-semibold text-[0.95rem] px-[30px] py-[15px] rounded-sm bg-transparent border border-navy text-navy transition-all duration-[300ms] hover:bg-navy hover:text-white hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold; }
+  .btn-secondary-dark { @apply inline-flex items-center justify-center gap-2.5 font-semibold text-[0.95rem] px-[30px] py-[15px] rounded-sm bg-white/5 border border-white/35 text-white transition-all duration-[300ms] hover:border-gold hover:text-gold-light hover:bg-white/10 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold; }
+
+  /* Scroll offset for fixed header */
+  .scroll-mt-hero { scroll-margin-top: 100px; }
+  #our-story, #our-process, #why-choose-us, #health-safety, #industries, #leadership { scroll-margin-top: 150px; }
+
+  /* Nav underline hover — pseudo-element trick */
+  .nav-link { @apply relative py-2 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-white/75 transition-colors duration-300 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold; }
+  .nav-link::after { content: ""; @apply absolute left-0 -bottom-0.5 h-0.5 w-0 bg-gold transition-all duration-300; transition-timing-function: cubic-bezier(0.22,1,0.36,1); }
+  .nav-link:hover::after, .nav-link.active::after { @apply w-full; }
+  .nav-link.active { @apply text-gold-light; }
+
+  /* Eyebrow label with left-tick line */
+  .eyebrow { @apply inline-flex items-center gap-2.5 font-mono text-[0.75rem] tracking-[0.16em] uppercase text-gold-dark mb-[18px]; }
+  .eyebrow::before { content: ""; @apply w-[22px] h-px bg-gold flex-shrink-0; }
+  .eyebrow.on-dark { @apply text-gold-light; }
+
+  /* Hero grid lines overlay */
+  .hero-grid-lines {
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 64px);
+  }
+
+  /* Hero image overlay */
+  .hero-img-overlay { background: linear-gradient(115deg, rgba(14,27,44,0.94) 0%, rgba(14,27,44,0.78) 48%, rgba(20,32,46,0.58) 100%), var(--hero-image, none); background-size: cover; background-position: center; }
+
+  /* CTA radial glow */
+  .cta-glow::before { content: ""; @apply absolute w-[560px] h-[560px] rounded-full pointer-events-none; top: -260px; right: -180px; background: radial-gradient(circle, rgba(198,161,91,0.18), transparent 70%); }
+
+  /* Footer social hover */
+  .social-link { @apply w-11 h-11 rounded-full border border-white/20 flex items-center justify-center transition-all duration-300 hover:border-gold hover:bg-gold/10; }
+
+  /* Form focus ring */
+  .form-input { @apply font-body text-[0.96rem] px-4 py-3.5 border border-ivory-2 bg-white rounded-sm text-ink transition-all duration-300 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/15; }
+
+  /* Seal divider */
+  .seal-divider { @apply flex items-center gap-3.5 mb-[18px]; }
+  .seal-divider .line { @apply flex-none w-10 h-px; background: linear-gradient(90deg, #C6A15B, transparent); }
+}
