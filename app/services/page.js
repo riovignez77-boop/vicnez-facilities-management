@@ -2,15 +2,19 @@ import Link from "next/link";
 import Icon from "@/components/Icon";
 import { CategoryCard, StaffPlanCard } from "@/components/Cards";
 import { SERVICE_CATEGORIES, STAFFING_PLANS } from "@/lib/content";
+import StructuredData from "@/components/StructuredData";
+import { pageMetadata, servicesSchema } from "@/lib/seo";
 
-export const metadata = {
-  title: "Services",
-  description: "Explore Vicnez Facilities Management's full range of services across residential, commercial, specialized, outdoor, pool, and construction cleaning categories.",
-};
+export const metadata = pageMetadata({
+  title: "Cleaning & Facilities Management Services Bahrain",
+  description: "Explore professional cleaning, building maintenance, pool care, post-construction cleaning, outdoor services, and facilities staffing across Bahrain.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
     <>
+      <StructuredData data={servicesSchema} />
       {/* Page header */}
       <section className="relative overflow-hidden bg-navy pt-[170px] pb-[90px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}

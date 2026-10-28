@@ -2,6 +2,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollAnimations from "@/components/ScrollAnimations";
+import StructuredData from "@/components/StructuredData";
+import { organizationSchema, websiteSchema } from "@/lib/seo";
 
 export const metadata = {
   metadataBase: new URL("https://www.vfmbh.com"),
@@ -11,7 +13,38 @@ export const metadata = {
   },
   description:
     "Vicnez Facilities Management W.L.L provides premium housekeeping, commercial cleaning and technical maintenance across Bahrain, delivered to an inspected, verified standard.",
-  icons: { icon: "/images/favicon-32.png" },
+  applicationName: "Vicnez Facilities Management",
+  category: "Facilities Management",
+  keywords: [
+    "facilities management Bahrain",
+    "cleaning company Bahrain",
+    "commercial cleaning Bahrain",
+    "building maintenance Bahrain",
+    "residential cleaning Bahrain",
+    "pool maintenance Bahrain",
+  ],
+  authors: [{ name: "Vicnez Facilities Management W.L.L" }],
+  creator: "Vicnez Facilities Management W.L.L",
+  publisher: "Vicnez Facilities Management W.L.L",
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/images/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/favicon-64.png", sizes: "64x64", type: "image/png" },
+    ],
+    apple: "/images/logo-160.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -26,6 +59,8 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <StructuredData data={organizationSchema} />
+        <StructuredData data={websiteSchema} />
         <Header />
         {children}
         <Footer />

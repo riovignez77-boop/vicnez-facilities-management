@@ -3,8 +3,14 @@ import Seal from "@/components/Seal";
 import Icon from "@/components/Icon";
 import { ValueCard, ClientChip } from "@/components/Cards";
 import { SERVICE_CATEGORIES, WHY_CHOOSE_REASONS, VALUED_CLIENTS, HERO_PHOTO, COMPANY } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Home" };
+export const metadata = pageMetadata({
+  title: "Facilities Management & Cleaning Services in Bahrain",
+  description:
+    "Professional facilities management, commercial and residential cleaning, building maintenance, pool care, and staffing services across Bahrain.",
+  path: "/",
+});
 
 export default function HomePage() {
   return (

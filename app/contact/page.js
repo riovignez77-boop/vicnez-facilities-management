@@ -2,11 +2,13 @@ import Link from "next/link";
 import Icon from "@/components/Icon";
 import ContactForm from "@/components/ContactForm";
 import { COMPANY } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Contact Us",
-  description: "Contact Vicnez Facilities Management W.L.L in Bahrain for housekeeping, commercial cleaning and facilities maintenance services.",
-};
+export const metadata = pageMetadata({
+  title: "Contact Vicnez Facilities Management Bahrain",
+  description: "Request a tailored quote for cleaning, building maintenance, pool care, or facilities management services anywhere in Bahrain.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

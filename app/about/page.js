@@ -6,11 +6,13 @@ import {
   WHY_CHOOSE_REASONS, OUR_COMMITMENT, SAFETY_APPROACH,
   SAFETY_PRACTICES, WE_CARE_FOR, INDUSTRIES, LEADERS, COMPANY,
 } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "About Us",
-  description: "Learn about Vicnez Facilities Management W.L.L, including our story, values, process, leadership, and why Bahrain businesses choose us for an inspected, verified standard of service.",
-};
+export const metadata = pageMetadata({
+  title: "About Vicnez Facilities Management Bahrain",
+  description: "Meet Vicnez Facilities Management W.L.L, our leadership, values, safety practices, and inspected service process for clients across Bahrain.",
+  path: "/about",
+});
 
 const JUMP_LINKS = [
   { href: "#our-story", label: "Our Story" },

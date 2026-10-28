@@ -1,0 +1,21 @@
+{
+  "name": "Vicnez Facilities Management W.L.L",
+  "short_name": "Vicnez FM",
+  "description": "Facilities management and cleaning services across Bahrain.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0e1b2c",
+  "theme_color": "#0e1b2c",
+  "icons": [
+    {
+      "src": "/images/logo-160.png",
+      "sizes": "160x160",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
